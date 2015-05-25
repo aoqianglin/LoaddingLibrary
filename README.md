@@ -15,5 +15,5 @@ TODO:
 
 License
 
-Copyright (C) 2013-2015 Chen Hui <calmer91@gmail.com>
+Copyright (C) 2013-2015 Ryze Ao <aoqianglin@gmail.com>
 Licensed under the Apache License, Version 2.0 (the "License");
