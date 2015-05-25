@@ -2,7 +2,7 @@
 Loadding Library
 android上Circle 加载  ，圆角ImageView ，进度条Circle，移动的ImageView。Build Status
 
-DFM Inside:
+![baidu](/1.jpg,"haha")  
 
 
 
