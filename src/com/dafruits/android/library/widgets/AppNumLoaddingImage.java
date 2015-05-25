@@ -21,8 +21,6 @@ import android.view.View;
 public class AppNumLoaddingImage extends View {
 
 
-  private static final int N = 10;
-
   private int width;
 
   private int height;
@@ -121,18 +119,27 @@ public class AppNumLoaddingImage extends View {
   protected void onSizeChanged(int w, int h, int oldw, int oldh) {
     super.onSizeChanged(w, h, oldw, oldh);
 
-    this.width = w;
-    this.height = h;
+    this.width = getWidth();
+    this.height = getHeight();
+    
+    int r=0;
+    if (width>height) {
+		r=height/4;
+	}else{
+		r=width/4;
+	}
+    
 
-    bg_RectF.set(width / 2 - height / N, height / 2 - height / N, width / 2 + height / N, height
-        / 2 + height / N);
+    bg_RectF.set(width / 2-r, height / 2-r, width / 2 + r, height
+        / 2 + r);
 
-    draw_RectF.set(width / 2 - height / N, height / 2 - height / N, width / 2 + height / N, height
-        / 2 + height / N);
+    draw_RectF.set(width / 2 - r, height / 2 - r, width / 2 + r, height
+        / 2 + r);
 
-    progressValue = (float) (Math.PI * height / N * 2);
+    progressValue = (float) (Math.PI * r * 2);
 
 
+    removeCallbacks(myRunnable);
     post(myRunnable);
 
   }
@@ -154,7 +161,7 @@ public class AppNumLoaddingImage extends View {
         path.reset();
         current_value = 0;
       }
-      postDelayed(myRunnable, 200);
+      postDelayed(myRunnable, 300);
       invalidate();
     }
   };
@@ -164,7 +171,6 @@ public class AppNumLoaddingImage extends View {
     super.onDraw(canvas);
 
     canvas.drawArc(bg_RectF, 0, 360, true, bg_Paint);
-    canvas.restore();
 
     // canvas.drawArc(draw_RectF, 90, -180, true,
     // draw_Paint);
@@ -175,6 +181,7 @@ public class AppNumLoaddingImage extends View {
 
 
     canvas.drawText(text, width / 2 - text_Paint.measureText(text) / 2, height / 2, text_Paint);
+    canvas.restore();
 
 
   }

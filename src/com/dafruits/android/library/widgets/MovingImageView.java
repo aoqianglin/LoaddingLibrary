@@ -133,7 +133,9 @@ public class MovingImageView extends ImageView implements AnimatorUpdateListener
   protected void onVisibilityChanged(View changedView, int visibility) {
     super.onVisibilityChanged(changedView, visibility);
     if (visibility != VISIBLE) {
-      stopAnimation();
+    	if (valueAnimator != null && valueAnimator.isStarted()) {
+            valueAnimator.cancel();
+          }
     } else {
       if (valueAnimator != null && !valueAnimator.isStarted()) {
         valueAnimator.start();
@@ -144,7 +146,6 @@ public class MovingImageView extends ImageView implements AnimatorUpdateListener
   @Override
   public void onAnimationUpdate(ValueAnimator animation) {
     dela = (Float) animation.getAnimatedValue();
-    Log.e(VIEW_LOG_TAG, "dela: " + dela);
     invalidate();
   }
 
