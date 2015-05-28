@@ -19,7 +19,7 @@ import com.dafruits.android.library.R;
  * 
  * @description 利用图片方式实现
  * @autor Ryze 2015-5-20 下午1:55:57
- * @see AppLoaddingImage2 通过直接绘制实现
+ * @see CircleLoaddingView 通过直接绘制实现
  */
 public class AppLoaddingImage extends ImageView implements AnimatorListener, AnimatorUpdateListener {
 
